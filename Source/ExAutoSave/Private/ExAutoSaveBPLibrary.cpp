@@ -15,6 +15,7 @@ UExAutoSaveBPLibrary::UExAutoSaveBPLibrary(const FObjectInitializer& ObjectIniti
 
 void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString gameSaveSlot, int gameSaveIndex,  TArray<AActor*> gActor, TArray<FString> gString, TArray<FText> gText, TArray<FVector> gVector, TArray<FVector4> gVector4, TArray<FVector2D> gVector2, TArray<FRotator> gRotator, TArray<float> gFloat, TArray<int> gInt, TArray<bool> gBool, TArray<FTransform> gTransform, FExStructTemp ExStructArr, FExTypeStruct ExStructType, TArray<FExTypeStruct> ExStructTypeArr, bool& isSaved)
 {
+	isSaved = false;
 	UExSaveGameData* creatSaveObject = Cast<UExSaveGameData>(UGameplayStatics::CreateSaveGameObject(UExSaveGameData::StaticClass()));
 
 	creatSaveObject->gActor = gActor;
@@ -36,10 +37,12 @@ void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString ga
 	{
 		FPlatformProcess::Sleep(setTimer);
 		UGameplayStatics::SaveGameToSlot(creatSaveObject, gameSaveSlot, gameSaveIndex);
+		isSaved = true;
 	}
 	else
 	{
 		UGameplayStatics::SaveGameToSlot(creatSaveObject, gameSaveSlot, gameSaveIndex);
+		isSaved = true;
 	}
 
 }
