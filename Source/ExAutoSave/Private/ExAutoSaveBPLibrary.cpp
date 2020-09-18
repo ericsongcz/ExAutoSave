@@ -13,7 +13,7 @@ UExAutoSaveBPLibrary::UExAutoSaveBPLibrary(const FObjectInitializer& ObjectIniti
 
 }
 
-void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString gameSaveSlot, int gameSaveIndex,  TArray<AActor*> gActor, TArray<FString> gString, TArray<FText> gText, TArray<FVector> gVector, TArray<FVector4> gVector4, TArray<FVector2D> gVector2, TArray<FRotator> gRotator, TArray<float> gFloat, TArray<int> gInt, TArray<bool> gBool, TArray<FTransform> gTransform, FExStructTemp ExStructArr, FExTypeStruct ExStructType, TArray<FExTypeStruct> ExStructTypeArr, bool& isSaved)
+void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString gameSaveSlot, int gameSaveIndex, TArray<AActor*> gActor, TArray<FString> gString, TArray<FText> gText, TArray<FVector> gVector, TArray<FVector4> gVector4, TArray<FVector2D> gVector2, TArray<FRotator> gRotator, TArray<float> gFloat, TArray<int> gInt, TArray<bool> gBool, TArray<FTransform> gTransform, FExStructTemp ExStructArr, FExTypeStruct ExStructType, TArray<FExTypeStruct> ExStructTypeArr, TArray<UObject*> ExStructObjArr, TArray<UGameInstance*> ExGameInstance, TArray<AGameModeBase*> ExGameMode, TArray<AGameStateBase*> ExGameState, TArray<UObject*> ExLevelData, bool& isSaved)
 {
 	isSaved = false;
 	UExSaveGameData* creatSaveObject = Cast<UExSaveGameData>(UGameplayStatics::CreateSaveGameObject(UExSaveGameData::StaticClass()));
@@ -32,6 +32,11 @@ void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString ga
 	creatSaveObject->ExStructArr = ExStructArr;
 	creatSaveObject->ExStructType = ExStructType;
 	creatSaveObject->ExStructTypeArr = ExStructTypeArr;
+	creatSaveObject->ExStructObjArr = ExStructObjArr;
+	creatSaveObject->ExGameInstance = ExGameInstance;
+	creatSaveObject->ExGameMode = ExGameMode;
+	creatSaveObject->ExGameState = ExGameState;
+	creatSaveObject->ExLevelData = ExLevelData;
 
 	if (isDelaySave)
 	{
@@ -47,7 +52,7 @@ void UExAutoSaveBPLibrary::ExAutoSave(int setTimer, bool isDelaySave, FString ga
 
 }
 
-void UExAutoSaveBPLibrary::ExAutoLoad(FString SlotName, int gameSaveIndex, TArray<AActor*>& gActor, TArray<FString>& gString, TArray<FText>& gText, TArray<FVector>& gVector, TArray<FVector4>& gVector4, TArray<FVector2D>& gVector2, TArray<FRotator>& gRotator, TArray<float>& gFloat, TArray<int>& gInt, TArray<bool>& gBool, TArray<FTransform>& gTransform, FExStructTemp& ExStructArr, FExTypeStruct& ExStructType, TArray<FExTypeStruct>& ExStructTypeArr)
+void UExAutoSaveBPLibrary::ExAutoLoad(FString SlotName, int gameSaveIndex, TArray<AActor*>& gActor, TArray<FString>& gString, TArray<FText>& gText, TArray<FVector>& gVector, TArray<FVector4>& gVector4, TArray<FVector2D>& gVector2, TArray<FRotator>& gRotator, TArray<float>& gFloat, TArray<int>& gInt, TArray<bool>& gBool, TArray<FTransform>& gTransform, FExStructTemp& ExStructArr, FExTypeStruct& ExStructType, TArray<FExTypeStruct>& ExStructTypeArr, TArray<UObject*>& ExStructObjArr, TArray<UGameInstance*>& ExGameInstance, TArray<AGameModeBase*>& ExGameMode, TArray<AGameStateBase*>& ExGameState, TArray<UObject*>& ExLevelData)
 {
 
 	UExSaveGameData* loadSaveObject = Cast<UExSaveGameData>(UGameplayStatics::CreateSaveGameObject(UExSaveGameData::StaticClass()));
@@ -68,5 +73,11 @@ void UExAutoSaveBPLibrary::ExAutoLoad(FString SlotName, int gameSaveIndex, TArra
 	ExStructArr = loadSaveObject->ExStructArr;
 	ExStructType = loadSaveObject->ExStructType;
 	ExStructTypeArr = loadSaveObject->ExStructTypeArr;
+	ExStructObjArr = loadSaveObject->ExStructObjArr;
+	ExGameInstance = loadSaveObject->ExGameInstance;
+	ExGameMode = loadSaveObject->ExGameMode;
+	ExGameState = loadSaveObject->ExGameState;
+	ExLevelData = loadSaveObject->ExLevelData;
+
 
 }

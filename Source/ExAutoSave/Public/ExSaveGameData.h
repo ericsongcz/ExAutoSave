@@ -63,4 +63,16 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
 	TArray<UObject*> ExStructObjArr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+	TArray<UGameInstance*> ExGameInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+	TArray<AGameModeBase*> ExGameMode;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+	TArray<AGameStateBase*> ExGameState;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+	TArray<UObject*> ExLevelData;
 };

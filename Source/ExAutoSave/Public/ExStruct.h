@@ -65,6 +65,18 @@ struct FExStructTemp
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct|Array")
 		TArray<UObject*> structObjArr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct|Array")
+		TArray<UGameInstance*> ExGameInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct|Array")
+		TArray<AGameModeBase*> ExGameMode;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct|Array")
+		TArray<AGameStateBase*> ExGameState;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct|Array")
+		TArray<UObject*> ExLevelData;
+
 };
 
 USTRUCT(BlueprintType)
@@ -119,6 +131,18 @@ struct FExTypeStruct
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData|ExStruct")
 		UObject* structObj;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+		UGameInstance* ExGameInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+		AGameModeBase* ExGameMode;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+		AGameStateBase* ExGameState;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExArraySaveData")
+		UObject* ExLevelData;
 };
 
 UCLASS()
